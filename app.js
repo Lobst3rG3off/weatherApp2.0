@@ -20,9 +20,8 @@ window.addEventListener('load', () => {
             return response.json();
         })
         .then(data => {
-            console.log(data)
             const {temp} = data.main;
-            const {description, icon} = data.weather[0]
+            const {description} = data.weather[0]
             //Set DOM Elements from the API
             temperatureDegree.textContent = temp
             temperatureDescription.textContent = description
@@ -59,7 +58,6 @@ function getResults(query) {
 }
 
 function displayResults(weather) {
-    console.log(weather)
     let city = document.querySelector('.location .city');
     city.innerText = `${weather.name}, ${weather.sys.country}`
 
