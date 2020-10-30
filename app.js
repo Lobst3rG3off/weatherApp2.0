@@ -20,7 +20,6 @@ window.addEventListener('load', () => {
             return response.json();
         })
         .then(data => {
-            console.log(data)
             const {temp, temp_max, temp_min} = data.main;
             const {description} = data.weather[0]
             //Set DOM Elements from the API
