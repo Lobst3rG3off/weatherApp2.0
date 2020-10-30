@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
     let temperatureDescription = document.querySelector('.weather');
     let temperatureDegree = document.querySelector('.temp');
     let locationTimezone = document.querySelector('.city');
-    
+    let hilow = document.querySelector('.hi-low');
     
 
     if (navigator.geolocation) {
@@ -20,12 +20,15 @@ window.addEventListener('load', () => {
             return response.json();
         })
         .then(data => {
-            const {temp} = data.main;
+            console.log(data)
+            const {temp, temp_max, temp_min} = data.main;
             const {description} = data.weather[0]
             //Set DOM Elements from the API
-            temperatureDegree.textContent = temp
+            temperatureDegree.textContent = `${Math.round(temp)}°c`
             temperatureDescription.textContent = description
             locationTimezone.textContent = data.name
+            hilow.innerText = `${Math.round(temp_min)}°c / ${Math.round(temp_max)}°c`;
+            
         })
         });
     } else{
